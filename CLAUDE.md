@@ -112,7 +112,7 @@ The full reference is [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md). A summary 
 
 | Repository | Its tracker holds |
 |---|---|
-| [`harmflow/harmflow-app`](https://github.com/harmflow/harmflow-app/issues) | The daemon, the desktop, the installers, and their tests — the monorepo of [ADR-0012](https://github.com/harmflow/harmflow-docs/blob/main/adr/ADR-0012-harmflow-app-monorepo.md) |
+| [`harmflow/harmflow-app`](https://github.com/harmflow/harmflow-app/issues) | The daemon, the desktop, the installers, and their tests — the monorepo of [ADR-0012](https://github.com/harmflow/harmflow-docs/blob/main/adr/ADR-0012-harmflow-app-monorepo.md). **Public**: anyone can read its issues |
 | [`harmflow/harmflow-docs`](https://github.com/harmflow/harmflow-docs/issues) | Documentation only: a wrong, missing, stale, or contradictory document, labelled `repo:docs` |
 | [`harmflow/harmflow-site`](https://github.com/harmflow/harmflow-site/issues) | The public product website and its build and deployment — [ADR-0014](https://github.com/harmflow/harmflow-docs/blob/main/adr/ADR-0014-harmflow-site-public-website.md). **Public**: anyone can read its issues |
 
@@ -164,9 +164,11 @@ The full `gh` mechanics for agent skills live in `harmflow/harmflow-docs` → `a
 - `config.yml` disables blank issues. Removing the default forms while keeping it leaves every inheriting
   repository with no way to open an issue — and each repository tracks its own.
 - Malformed issue template YAML silently breaks the issue creation UI without any visible error.
-- `harmflow-site` and this repository are **public**, history and issues included; `harmflow-app` and
-  `harmflow-docs` are private. A website issue that mirrors private work links it in full form without restating
-  it — unannounced features, internal decisions, and secrets never land in a public repository (ADR-0014).
+- `harmflow-app`, `harmflow-site`, and this repository are **public**, history and issues included;
+  `harmflow-docs` is private. A public issue that mirrors private work links it in full form without restating
+  it — unannounced features, internal decisions, secrets, and personal identifiers (task-manager project or task
+  IDs, account IDs, personal e-mail addresses) never land in a public repository, its `CLAUDE.md` included
+  (ADR-0014).
 - Claude Code reads `CLAUDE.md` only from the working directory upward, never this file from another
   repository. A rule that must bind elsewhere has to be restated in that repository's `CLAUDE.md`.
 - `LICENSE` is a proprietary notice — do not alter it. GitHub does not inherit `LICENSE` from this repository,
