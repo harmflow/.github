@@ -14,7 +14,8 @@ authorized collaborators only; pull requests from anyone else are not accepted y
 ## Issues
 
 Each repository tracks its own issues. File an issue in the repository where the fix lands: `harmflow-app` for the
-daemon, the desktop, the installers, and their tests; `harmflow-docs` for documentation.
+daemon, the desktop, the installers, and their tests; `harmflow-docs` for documentation; `harmflow-site` for the
+public product website. `harmflow-site` is public, so its issues never restate private work — link it instead.
 
 - Search existing issues before opening a new one.
 - When the work also needs a change in another repository, open an issue there too and link the two in full form
