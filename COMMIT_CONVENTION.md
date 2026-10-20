@@ -56,6 +56,8 @@ Scopes in common use across the org:
 6. Breaking changes: add `!` after the type or scope, and a `BREAKING CHANGE:` footer that says how to migrate.
 7. Pull requests are merged with **Rebase and merge**, so every commit lands on `main` unchanged: each commit in
    a pull request must be a valid Conventional Commit, and the pull request title must itself be a valid subject.
+   Never use **Squash and merge** or a merge commit. Fold review fixes into the commits they belong to
+   (`git commit --fixup` + `git rebase -i --autosquash`) before merging.
 
 ## Examples
 

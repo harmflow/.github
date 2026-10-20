@@ -31,7 +31,7 @@
 ## Checklist
 
 - [ ] The change is focused, with no unrelated refactors.
-- [ ] Every commit is a valid Conventional Commit (the PR is merged with Rebase and merge).
+- [ ] Every commit is a valid Conventional Commit (the PR is merged with Rebase and merge, never squashed).
 - [ ] Documentation is updated where behavior changed (README, `CLAUDE.md`), or a linked `harmflow/harmflow-docs` issue
       covers the ADR, spec, or architecture change.
 - [ ] Security impact considered; no secrets, credentials, or local configuration committed.

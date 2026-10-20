@@ -50,8 +50,9 @@ description includes:
 
 - Every CI check must be green before merging. Branch protection is unavailable for private repositories on the
   free plan, so this is enforced by convention, not by GitHub.
-- Merge with **Rebase and merge** to keep `main` linear; do not create merge commits. Every commit in the pull
-  request lands on `main`, so each one must follow [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md).
+- Merge with **Rebase and merge** to keep `main` linear; never use Squash and merge or create merge commits.
+  Every commit in the pull request lands on `main`, so each one must follow
+  [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md). Fold review fixes into the commits they belong to before merging.
 - A pull request may be closed if it is inactive, out of scope, or superseded by another approach.
 
 ## Coding Conventions
