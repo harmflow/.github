@@ -6,19 +6,19 @@ rules in its `README.md` or `CLAUDE.md`.
 ## Who can contribute
 
 harmflow intends to accept outside contributions while reserving commercial exploitation to its owner (`D-055` in
-`harmflow/docs`). The license and contributor agreement that make this possible are not published yet
-([`decisions/licensing-and-contributions.md`](https://github.com/harmflow/docs/blob/main/decisions/licensing-and-contributions.md)
-in `harmflow/docs`). Until they are, every repository is proprietary (see its `LICENSE`) and contributions come from
+`harmflow/harmflow-docs`). The license and contributor agreement that make this possible are not published yet
+([`decisions/licensing-and-contributions.md`](https://github.com/harmflow/harmflow-docs/blob/main/decisions/licensing-and-contributions.md)
+in `harmflow/harmflow-docs`). Until they are, every repository is proprietary (see its `LICENSE`) and contributions come from
 authorized collaborators only; pull requests from anyone else are not accepted yet.
 
 ## Issues
 
 Each repository tracks its own issues. File an issue in the repository where the fix lands: `harmflow-app` for the
-daemon, the desktop, the installers, and their tests; `docs` for documentation.
+daemon, the desktop, the installers, and their tests; `harmflow-docs` for documentation.
 
 - Search existing issues before opening a new one.
 - When the work also needs a change in another repository, open an issue there too and link the two in full form
-  (`harmflow/docs#42`).
+  (`harmflow/harmflow-docs#42`).
 - For larger changes, agree on the approach in the issue before writing code.
 
 ## Workflow
@@ -57,7 +57,7 @@ description includes:
 ## Coding Conventions
 
 - Follow the style, architecture, and tooling already present in the repository.
-- Use the domain terms of [`CONTEXT.md`](https://github.com/harmflow/docs/blob/main/CONTEXT.md) in `harmflow/docs`
+- Use the domain terms of [`CONTEXT.md`](https://github.com/harmflow/harmflow-docs/blob/main/CONTEXT.md) in `harmflow/harmflow-docs`
   for names in code, issues, and documents.
 - Prefer clear names and simple control flow.
 - Keep unrelated refactors out of feature and bug-fix pull requests.

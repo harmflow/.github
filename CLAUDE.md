@@ -87,7 +87,7 @@ The full reference is [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md). A summary 
 - Body bullets explain *why*, not what — the diff shows the what. Wrap the body at 72 columns.
 - Do **not** add the `Co-Authored-By: Claude ...` trailer. If a tool inserts it, remove it before committing.
 - Reference issues in the footer: `Closes #42` for an issue in the same repository, the full form
-  `Closes harmflow/docs#42` for one in another repository.
+  `Closes harmflow/harmflow-docs#42` for one in another repository.
 - Breaking changes: `!` after the type or scope, plus a `BREAKING CHANGE:` footer.
 
 ---
@@ -111,8 +111,8 @@ The full reference is [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md). A summary 
 
 | Repository | Its tracker holds |
 |---|---|
-| [`harmflow/harmflow-app`](https://github.com/harmflow/harmflow-app/issues) | The daemon, the desktop, the installers, and their tests — the monorepo of [ADR-0012](https://github.com/harmflow/docs/blob/main/adr/ADR-0012-harmflow-app-monorepo.md) |
-| [`harmflow/docs`](https://github.com/harmflow/docs/issues) | Documentation only: a wrong, missing, stale, or contradictory document, labelled `repo:docs` |
+| [`harmflow/harmflow-app`](https://github.com/harmflow/harmflow-app/issues) | The daemon, the desktop, the installers, and their tests — the monorepo of [ADR-0012](https://github.com/harmflow/harmflow-docs/blob/main/adr/ADR-0012-harmflow-app-monorepo.md) |
+| [`harmflow/harmflow-docs`](https://github.com/harmflow/harmflow-docs/issues) | Documentation only: a wrong, missing, stale, or contradictory document, labelled `repo:docs` |
 
 ### Rules
 
@@ -123,13 +123,13 @@ The full reference is [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md). A summary 
    of working them where they landed.
 3. **Split work that crosses repositories.** A code change that requires a document change (an ADR, an
    architecture update) is one issue in each repository, each linking the other in full form.
-4. **Cross-reference other repositories with the full form** `harmflow/docs#42`. A bare `#42` in a commit or
+4. **Cross-reference other repositories with the full form** `harmflow/harmflow-docs#42`. A bare `#42` in a commit or
    PR body resolves against the local repo and will silently point at the wrong thing.
 5. **Use the canonical triage labels** in every tracker: `needs-triage`, `needs-info`, `ready-for-agent`,
-   `ready-for-human`, `wontfix` (mapping in `harmflow/docs` → `agents/triage-labels.md`). Create them in a new
+   `ready-for-human`, `wontfix` (mapping in `harmflow/harmflow-docs` → `agents/triage-labels.md`). Create them in a new
    repository before triaging there.
 
-The full `gh` mechanics for agent skills live in `harmflow/docs` → `agents/issue-tracker.md`.
+The full `gh` mechanics for agent skills live in `harmflow/harmflow-docs` → `agents/issue-tracker.md`.
 
 ---
 
@@ -138,12 +138,12 @@ The full `gh` mechanics for agent skills live in `harmflow/docs` → `agents/iss
 | Resource | Link |
 |---|---|
 | Code issues | [`harmflow/harmflow-app` issues](https://github.com/harmflow/harmflow-app/issues) |
-| Documentation issues | [`harmflow/docs` issues](https://github.com/harmflow/docs/issues) |
+| Documentation issues | [`harmflow/harmflow-docs` issues](https://github.com/harmflow/harmflow-docs/issues) |
 | Commit conventions (canonical) | [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md) |
 | Contribution guide | [`CONTRIBUTING.md`](CONTRIBUTING.md) |
-| Licensing and contributions decision | [`harmflow/docs` → `decisions/licensing-and-contributions.md`](https://github.com/harmflow/docs/blob/main/decisions/licensing-and-contributions.md) |
-| ADRs | [`harmflow/docs` → `adr/`](https://github.com/harmflow/docs/tree/main/adr) |
-| Domain glossary | [`harmflow/docs` → `CONTEXT.md`](https://github.com/harmflow/docs/blob/main/CONTEXT.md) |
+| Licensing and contributions decision | [`harmflow/harmflow-docs` → `decisions/licensing-and-contributions.md`](https://github.com/harmflow/harmflow-docs/blob/main/decisions/licensing-and-contributions.md) |
+| ADRs | [`harmflow/harmflow-docs` → `adr/`](https://github.com/harmflow/harmflow-docs/tree/main/adr) |
+| Domain glossary | [`harmflow/harmflow-docs` → `CONTEXT.md`](https://github.com/harmflow/harmflow-docs/blob/main/CONTEXT.md) |
 | Repository overview | [`README.md`](README.md) |
 | Security reporting | [`SECURITY.md`](SECURITY.md) |
 
@@ -154,7 +154,7 @@ The full `gh` mechanics for agent skills live in `harmflow/docs` → `agents/iss
 - This repo is the **fallback** for the entire org. Changes here affect every repository that has not overridden the file locally — review carefully before merging.
 - A file only becomes an org default if no repository defines its own copy. A repo-level `CONTRIBUTING.md` or
   `.github/ISSUE_TEMPLATE/` silently shadows the default here — check before assuming a change reaches a repo.
-  `harmflow/docs` already overrides the issue forms with documentation-only ones.
+  `harmflow/harmflow-docs` already overrides the issue forms with documentation-only ones.
 - Default issue templates are read from `.github/ISSUE_TEMPLATE/` **inside** this repository; an
   `ISSUE_TEMPLATE/` folder at the root is ignored. The folder is inherited as a whole: a repository with any
   form of its own gets none of the defaults, including `config.yml`.
@@ -165,7 +165,7 @@ The full `gh` mechanics for agent skills live in `harmflow/docs` → `agents/iss
   repository. A rule that must bind elsewhere has to be restated in that repository's `CLAUDE.md`.
 - `LICENSE` is a proprietary notice — do not alter it. GitHub does not inherit `LICENSE` from this repository,
   so every repository keeps its own copy. The product's eventual license is still open
-  (`D-055`, `D-056`, `OD-04` in `harmflow/docs`); changing it is a decision there first.
+  (`D-055`, `D-056`, `OD-04` in `harmflow/harmflow-docs`); changing it is a decision there first.
 
 ---
 
