@@ -15,7 +15,8 @@ authorized collaborators only; pull requests from anyone else are not accepted y
 
 Each repository tracks its own issues. File an issue in the repository where the fix lands: `harmflow-app` for the
 daemon, the desktop, the installers, and their tests; `harmflow-docs` for documentation; `harmflow-site` for the
-public product website. `harmflow-site` is public, so its issues never restate private work — link it instead.
+public product website. `harmflow-app` and `harmflow-site` are public, so their issues never restate private work —
+link it instead.
 
 - Search existing issues before opening a new one.
 - When the work also needs a change in another repository, open an issue there too and link the two in full form
@@ -49,8 +50,8 @@ description includes:
 
 ## Reviews and Merging
 
-- Every CI check must be green before merging. Branch protection is unavailable for private repositories on the
-  free plan, so this is enforced by convention, not by GitHub.
+- Every CI check must be green before merging. On the free plan, branch protection is available on the public
+  repositories but not on the private `harmflow-docs`, where this is enforced by convention only.
 - Merge with **Rebase and merge** to keep `main` linear; never use Squash and merge or create merge commits.
   Every commit in the pull request lands on `main`, so each one must follow
   [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md). Fold review fixes into the commits they belong to before merging.
