@@ -100,8 +100,9 @@ The full reference is [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md). A summary 
    repositories.
 4. All CI checks must pass before merging. Branch protection is unavailable for private repositories on the
    free plan, so this is enforced by convention, not by GitHub.
-5. Merge with **Rebase and merge** to keep `main` linear; do not create merge commits. Every commit in the PR lands
-   on `main` as-is, so each one must be a valid Conventional Commit.
+5. Merge with **Rebase and merge** to keep `main` linear; never use Squash and merge or create merge commits
+   (`gh pr merge --rebase`). Every commit in the PR lands on `main` as-is, so each one must be a valid
+   Conventional Commit — fold review fixes into their commits (`--fixup` + `rebase -i --autosquash`) first.
 
 ---
 
