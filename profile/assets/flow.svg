@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="490" viewBox="0 0 1280 490" role="img"
+     aria-labelledby="flow-title flow-desc">
+  <title id="flow-title">How HarmFlow is designed to work</title>
+  <desc id="flow-desc">A task file says what to do, when, with which agent, and what it may touch. The daemon schedules
+    and queues it, enforces its permissions, and catches up after the machine sleeps. It starts the harness, Claude Code
+    or Codex, falling back to the next one when a quota runs out. The result is a draft pull request with its tests,
+    events, and logs, which the user reviews and merges. Unfinished work resumes from checkpoints. The desktop dashboard
+    talks to the daemon through a local API; closing it stops nothing.</desc>
+
+  <style>
+    .sans  { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
+    .mono  { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+    .label { font-size: 14px; letter-spacing: 2.5px; }
+    .title { font-size: 28px; font-weight: 700; fill: #eef4ff; }
+    .body  { font-size: 18px; fill: #aab6cf; }
+    .note  { font-size: 15px; fill: #7d8bab; }
+
+    .card  { fill: #0c1324; stroke: #24314f; stroke-width: 1.5; }
+    .wire  { fill: none; stroke-width: 2; stroke-dasharray: 5 9; animation: flow 0.9s linear infinite; }
+    .loop  { fill: none; stroke-width: 2; stroke-dasharray: 5 9; animation: flow 1.6s linear infinite; }
+
+    @keyframes flow { to { stroke-dashoffset: -14; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .wire, .loop { animation: none; }
+    }
+  </style>
+
+  <defs>
+    <clipPath id="frame">
+      <rect width="1280" height="490" rx="18"/>
+    </clipPath>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#060a15"/>
+      <stop offset="1" stop-color="#0d1328"/>
+    </linearGradient>
+    <radialGradient id="glow-cyan">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity=".14"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-magenta">
+      <stop offset="0" stop-color="#e040fb" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#e040fb" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#67e8f9" stroke-opacity=".05"/>
+    </pattern>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset=".5" stop-color="#8b5cf6"/>
+      <stop offset="1" stop-color="#e040fb"/>
+    </linearGradient>
+    <filter id="halo" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7"
+            orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#22d3ee"/>
+    </marker>
+    <marker id="arrow-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7"
+            orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#8b5cf6"/>
+    </marker>
+    <marker id="arrow-magenta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7"
+            orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#e040fb"/>
+    </marker>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1280" height="490" fill="url(#bg)"/>
+    <circle cx="485" cy="290" r="420" fill="url(#glow-cyan)"/>
+    <circle cx="1150" cy="460" r="380" fill="url(#glow-magenta)"/>
+    <rect width="1280" height="490" fill="url(#grid)"/>
+
+    <!-- HUD corners -->
+    <g fill="none" stroke="#22d3ee" stroke-opacity=".5" stroke-width="2">
+      <path d="M24 56V24H56"/>
+      <path d="M1224 24H1256V56"/>
+      <path d="M24 434V466H56"/>
+      <path d="M1256 434V466H1224"/>
+    </g>
+
+    <!-- Dashboard and the local API -->
+    <rect class="card" x="345" y="40" width="280" height="84" rx="12"/>
+    <text x="369" y="74" class="mono label" fill="#8b5cf6">DASHBOARD</text>
+    <text x="369" y="104" class="sans body">configure · watch · cancel</text>
+
+    <path class="wire" stroke="#8b5cf6" d="M485 130V162" marker-start="url(#arrow-violet)"
+          marker-end="url(#arrow-violet)"/>
+    <text x="500" y="152" class="mono note">local API</text>
+
+    <text x="690" y="76" class="mono note">// the daemon decides; the dashboard asks.</text>
+    <text x="690" y="104" class="mono note">// closing the app stops nothing.</text>
+
+    <!-- 01 Task -->
+    <rect class="card" x="50" y="170" width="250" height="230" rx="14"/>
+    <text x="74" y="206" class="mono label" fill="#22d3ee">01 · TASK</text>
+    <text x="74" y="248" class="mono title">task.yaml</text>
+    <text x="74" y="288" class="sans body">what to do</text>
+    <text x="74" y="318" class="sans body">when to run it</text>
+    <text x="74" y="348" class="sans body">which agent runs it</text>
+    <text x="74" y="378" class="sans body">what it may touch</text>
+
+    <!-- 02 Daemon: the highlighted core -->
+    <rect x="360" y="170" width="250" height="230" rx="14" fill="#22d3ee" opacity=".22" filter="url(#halo)"/>
+    <rect x="360" y="170" width="250" height="230" rx="14" fill="#0c1526" stroke="#22d3ee" stroke-width="2"/>
+    <text x="384" y="206" class="mono label" fill="#22d3ee">02 · DAEMON</text>
+    <text x="384" y="248" class="sans title">Daemon</text>
+    <text x="384" y="288" class="sans body">schedules &amp; queues</text>
+    <text x="384" y="318" class="sans body">enforces permissions</text>
+    <text x="384" y="348" class="sans body">catches up on wake</text>
+    <text x="384" y="378" class="sans body">streams live events</text>
+
+    <!-- 03 Harness -->
+    <rect class="card" x="670" y="170" width="250" height="230" rx="14"/>
+    <text x="694" y="206" class="mono label" fill="#8b5cf6">03 · HARNESS</text>
+    <text x="694" y="248" class="sans title">Your agent</text>
+    <rect x="694" y="268" width="150" height="32" rx="7" fill="#1a1410" stroke="#d97757" stroke-opacity=".8"/>
+    <text x="710" y="290" class="mono" font-size="15" fill="#f2b8a0">Claude Code</text>
+    <rect x="694" y="310" width="150" height="32" rx="7" fill="#12161f" stroke="#cbd5e1" stroke-opacity=".6"/>
+    <text x="710" y="332" class="mono" font-size="15" fill="#e2e8f0">Codex</text>
+    <text x="694" y="378" class="sans body">falls back on quota</text>
+
+    <!-- 04 Result -->
+    <rect class="card" x="980" y="170" width="250" height="230" rx="14"/>
+    <text x="1004" y="206" class="mono label" fill="#e040fb">04 · RESULT</text>
+    <text x="1004" y="248" class="sans title">Draft PR</text>
+    <text x="1004" y="288" class="sans body">tests &amp; diffs</text>
+    <text x="1004" y="318" class="sans body">events &amp; raw logs</text>
+    <text x="1004" y="348" class="sans body">full history</text>
+    <text x="1004" y="378" class="sans body">you review &amp; merge</text>
+
+    <!-- Wires between the stages -->
+    <path class="wire" stroke="#22d3ee" d="M306 285H352" marker-end="url(#arrow-cyan)"/>
+    <path class="wire" stroke="#22d3ee" d="M616 285H662" marker-end="url(#arrow-cyan)"/>
+    <path class="wire" stroke="#8b5cf6" d="M926 285H972" marker-end="url(#arrow-violet)"/>
+
+    <!-- Resume loop -->
+    <path class="loop" stroke="#e040fb" stroke-opacity=".8" d="M1105 406V444H485V408"
+          marker-end="url(#arrow-magenta)"/>
+    <rect x="690" y="428" width="210" height="32" rx="16" fill="#0b1124" stroke="#e040fb" stroke-opacity=".45"/>
+    <text x="795" y="449" class="mono" font-size="14" letter-spacing="1" fill="#f0abfc"
+          text-anchor="middle">resume from checkpoints</text>
+
+    <rect x="0" y="486" width="1280" height="4" fill="url(#edge)" opacity=".85"/>
+  </g>
+  <rect x=".5" y=".5" width="1279" height="489" rx="18" fill="none" stroke="#22d3ee" stroke-opacity=".18"/>
+</svg>

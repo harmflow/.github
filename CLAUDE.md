@@ -26,7 +26,9 @@
 │       ├── bug_report.yml       # Default bug form for repos without their own forms
 │       ├── config.yml           # Default issue chooser: no blank issues, security contact link
 │       └── feature_request.yml  # Default feature form for repos without their own forms
-├── profile/                # GitHub org profile README
+├── profile/
+│   ├── README.md           # Org profile shown at github.com/harmflow
+│   └── assets/             # SVG banner and diagram the profile embeds
 ├── CLAUDE.md               # ← you are here (org-level AI guidance)
 ├── CODE_OF_CONDUCT.md
 ├── COMMIT_CONVENTION.md    # Canonical commit type/scope reference
@@ -169,6 +171,11 @@ The full `gh` mechanics for agent skills live in `harmflow/harmflow-docs` → `a
   it — unannounced features, internal decisions, secrets, and personal identifiers (task-manager project or task
   IDs, account IDs, personal e-mail addresses) never land in a public repository, its `CLAUDE.md` included
   (ADR-0014).
+- `profile/README.md` renders on the organization page, outside this repository, so its links and images use
+  absolute URLs. Its SVGs load from `raw.githubusercontent.com` on `main`: a new or changed image shows only after it
+  is merged. They load as `<img>`, so no scripts or web fonts — system font stacks and CSS animations only, stopped
+  under `prefers-reduced-motion`. Their look borrows the desktop's cyberpunk inspiration and is not the official
+  visual identity, which is still open (`OD-14` in `harmflow/harmflow-docs`).
 - Claude Code reads `CLAUDE.md` only from the working directory upward, never this file from another
   repository. A rule that must bind elsewhere has to be restated in that repository's `CLAUDE.md`.
 - `LICENSE` is a proprietary notice — do not alter it. GitHub does not inherit `LICENSE` from this repository,

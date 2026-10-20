@@ -17,5 +17,6 @@ A repository overrides a default by adding its own file at the same path.
   documentation-only ones.
 - `PULL_REQUEST_TEMPLATE.md` - default pull request checklist.
 - `CLAUDE.md` - guidance for Claude Code working in this repository.
-- `profile/README.md` - organization profile.
+- `profile/README.md` - organization profile shown at github.com/harmflow; its SVG banner and diagram are in
+  `profile/assets/`.
 - `LICENSE` - proprietary license notice. GitHub does not inherit it, so every repository keeps its own copy.
