@@ -1,7 +1,7 @@
-# blindbet organization defaults
+# harmflow organization defaults
 
-This repository contains default community health files, issue template configuration, and the pull request
-template for repositories in the `blindbet` GitHub organization.
+This repository contains default community health files, the default issue forms, and the pull request template
+for repositories in the `harmflow` GitHub organization.
 
 A repository overrides a default by adding its own file at the same path.
 
@@ -12,8 +12,9 @@ A repository overrides a default by adding its own file at the same path.
 - `CONTRIBUTING.md` - contribution workflow and review guidelines.
 - `SECURITY.md` - private vulnerability reporting guidance.
 - `SUPPORT.md` - where to ask questions and request help.
-- `.github/ISSUE_TEMPLATE/config.yml` - org-wide issue chooser that points every repository at the central
-  tracker in `blindbet/docs`.
+- `.github/ISSUE_TEMPLATE/` - default issue forms (bug report, feature request) and chooser for every repository
+  that has no forms of its own. Each repository tracks its own issues; `harmflow/docs` overrides these forms with
+  documentation-only ones.
 - `PULL_REQUEST_TEMPLATE.md` - default pull request checklist.
 - `CLAUDE.md` - guidance for Claude Code working in this repository.
 - `profile/README.md` - organization profile.

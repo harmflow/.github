@@ -1,28 +1,35 @@
-# Contributing to blindbet
+# Contributing to harmflow
 
-blindbet is proprietary (see `LICENSE`): contributions come from authorized collaborators only. This guide is the
-default workflow for every repository in the `blindbet` organization. A repository may add its own rules in its
-`README.md` or `CLAUDE.md`.
+This guide is the default workflow for every repository in the `harmflow` organization. A repository may add its own
+rules in its `README.md` or `CLAUDE.md`.
+
+## Who can contribute
+
+harmflow intends to accept outside contributions while reserving commercial exploitation to its owner (`D-055` in
+`harmflow/docs`). The license and contributor agreement that make this possible are not published yet
+([`decisions/licensing-and-contributions.md`](https://github.com/harmflow/docs/blob/main/decisions/licensing-and-contributions.md)
+in `harmflow/docs`). Until they are, every repository is proprietary (see its `LICENSE`) and contributions come from
+authorized collaborators only; pull requests from anyone else are not accepted yet.
 
 ## Issues
 
-All issues live in [`blindbet/docs`](https://github.com/blindbet/docs/issues), whichever repository the work
-lands in.
+Each repository tracks its own issues. File an issue in the repository where the fix lands: `harmflow-app` for the
+daemon, the desktop, the installers, and their tests; `docs` for documentation.
 
 - Search existing issues before opening a new one.
-- Label the issue with `repo:<name>` for every repository it touches.
+- When the work also needs a change in another repository, open an issue there too and link the two in full form
+  (`harmflow/docs#42`).
 - For larger changes, agree on the approach in the issue before writing code.
 
 ## Workflow
 
 1. Branch off `main` in the repository itself — there are no forks.
 2. Name the branch `<type>/<short-description>`, with a type from [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md):
-   `feat/strategy-catalog-endpoint`, `fix/orders-ui-strategy`, `docs/adr-0043-options-scope`,
-   `ci/issue-on-failure`.
+   `feat/task-yaml-loader`, `fix/dashboard-reconnect`, `docs/harmflow-app-monorepo`, `ci/build-matrix`.
 3. Make one focused change. Add or update tests when behavior changes.
 4. Run the repository's documented checks locally (see its `README.md` or `CLAUDE.md`).
-5. Open a pull request in the same repository and link its issue with the full form:
-   `Closes blindbet/docs#<number>`.
+5. Open a pull request in the same repository and link its issue: `Closes #<number>` in the same repository,
+   `Closes harmflow/<repo>#<number>` across repositories.
 
 ## Commits
 
@@ -43,12 +50,15 @@ description includes:
 
 - Every CI check must be green before merging. Branch protection is unavailable for private repositories on the
   free plan, so this is enforced by convention, not by GitHub.
-- Merge with a merge commit (GitHub's default button); do not squash or rebase.
+- Merge with **Rebase and merge** to keep `main` linear; do not create merge commits. Every commit in the pull
+  request lands on `main`, so each one must follow [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md).
 - A pull request may be closed if it is inactive, out of scope, or superseded by another approach.
 
 ## Coding Conventions
 
 - Follow the style, architecture, and tooling already present in the repository.
+- Use the domain terms of [`CONTEXT.md`](https://github.com/harmflow/docs/blob/main/CONTEXT.md) in `harmflow/docs`
+  for names in code, issues, and documents.
 - Prefer clear names and simple control flow.
 - Keep unrelated refactors out of feature and bug-fix pull requests.
 - Document behavior that is non-obvious or important for maintainers.

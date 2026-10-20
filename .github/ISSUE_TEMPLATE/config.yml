@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: File an issue in the central tracker
-    url: https://github.com/blindbet/docs/issues/new/choose
-    about: All blindbet issues live in blindbet/docs, whichever repository the work lands in.
+  - name: Report a documentation problem
+    url: https://github.com/harmflow/docs/issues/new/choose
+    about: A wrong, missing, stale, or contradictory document belongs in harmflow/docs, not here.
   - name: Report a security vulnerability
-    url: https://github.com/blindbet/.github/blob/main/SECURITY.md
+    url: https://github.com/harmflow/.github/blob/main/SECURITY.md
     about: Never report vulnerabilities in a public issue. Follow the private reporting process.

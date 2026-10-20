@@ -1,15 +1,15 @@
 # CLAUDE.md
 
-> This file provides context and guidance for Claude working in any repository under the **blindbet** GitHub organization.
+> This file provides context and guidance for Claude working in any repository under the **harmflow** GitHub organization.
 > Individual repositories may add their own `CLAUDE.md` to override or extend these defaults.
 
 ---
 
 ## Project Overview
 
-**Name:** blindbet / `.github`
+**Name:** harmflow / `.github`
 
-**Purpose:** Holds GitHub org-level defaults — community health files, issue/PR templates, and AI guidance — for the *blindbet* organization. Individual repos override by placing the same file at the same path inside their own repository.
+**Purpose:** Holds GitHub org-level defaults — community health files, issue/PR templates, and AI guidance — for the *harmflow* organization. Individual repos override by placing the same file at the same path inside their own repository.
 
 **Owner / Team:** @lpiedade
 
@@ -23,7 +23,9 @@
 .github/
 ├── .github/
 │   └── ISSUE_TEMPLATE/
-│       └── config.yml      # Org-wide issue chooser: points every repo at blindbet/docs
+│       ├── bug_report.yml       # Default bug form for repos without their own forms
+│       ├── config.yml           # Default issue chooser: no blank issues, security contact link
+│       └── feature_request.yml  # Default feature form for repos without their own forms
 ├── profile/                # GitHub org profile README
 ├── CLAUDE.md               # ← you are here (org-level AI guidance)
 ├── CODE_OF_CONDUCT.md
@@ -46,11 +48,11 @@
 git  # that's all — no build or install step
 ```
 
-### Validate the issue template config (optional)
+### Validate the issue templates (optional)
 
 ```bash
 # Requires Node on PATH. Checks YAML syntax only; GitHub validates the schema when it renders the chooser.
-npx js-yaml .github/ISSUE_TEMPLATE/config.yml
+for f in .github/ISSUE_TEMPLATE/*.yml; do npx js-yaml "$f"; done
 ```
 
 ---
@@ -69,7 +71,7 @@ npx js-yaml .github/ISSUE_TEMPLATE/config.yml
 |---|---|---|
 | Markdown files | UPPER_SNAKE_CASE | `COMMIT_CONVENTION.md` |
 | Issue templates | snake_case | `bug_report.yml` |
-| Branch names | `<type>/<short-description>`, `<type>` from [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md) | `feat/strategy-catalog-endpoint`, `ci/issue-on-failure` |
+| Branch names | `<type>/<short-description>`, `<type>` from [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md) | `feat/task-yaml-loader`, `docs/harmflow-app-monorepo` |
 
 ---
 
@@ -80,11 +82,12 @@ The full reference is [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md). A summary 
 - Conventional Commits: `<type>(<scope>): <subject>`. Types: `feat`, `fix`, `docs`, `refactor`, `test`, `perf`,
   `ci`, `chore`.
 - The scope is optional and free-form: the area the change touches, in lower-case kebab-case. Reuse the scopes
-  the repository already uses (`claude`, `github`, `adr`, `db`, …).
+  the repository already uses (`claude`, `github`, `adr`, `spec`, `decisions`, …).
 - Subject at most **72 characters**, imperative mood ("add", not "added"), no trailing period.
 - Body bullets explain *why*, not what — the diff shows the what. Wrap the body at 72 columns.
 - Do **not** add the `Co-Authored-By: Claude ...` trailer. If a tool inserts it, remove it before committing.
-- Reference issues by full form in the footer: `Closes blindbet/docs#42`.
+- Reference issues in the footer: `Closes #42` for an issue in the same repository, the full form
+  `Closes harmflow/docs#42` for one in another repository.
 - Breaking changes: `!` after the type or scope, plus a `BREAKING CHANGE:` footer.
 
 ---
@@ -93,50 +96,40 @@ The full reference is [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md). A summary 
 
 1. Branch off `main` in the repository itself (no forks) using `<type>/<short-description>`.
 2. Keep PRs focused — one logical change per PR. The PR title is a valid Conventional Commits subject.
-3. Link the issue in the PR body with the full form: `Closes blindbet/docs#42`.
+3. Link the issue in the PR body: `Closes #42` in the same repository, `Closes harmflow/<repo>#42` across
+   repositories.
 4. All CI checks must pass before merging. Branch protection is unavailable for private repositories on the
    free plan, so this is enforced by convention, not by GitHub.
-5. Merge with a merge commit (GitHub's default `Merge pull request #N` button); do not squash or rebase.
+5. Merge with **Rebase and merge** to keep `main` linear; do not create merge commits. Every commit in the PR lands
+   on `main` as-is, so each one must be a valid Conventional Commit.
 
 ---
 
 ## Issue tracker
 
-**All issues for the blindbet platform live in [`blindbet/docs`](https://github.com/blindbet/docs/issues).**
-No other repository in the org keeps its own issue backlog.
+**Every harmflow repository tracks its own issues.** An issue lives in the repository where its fix lands.
 
-### Why one repo
-
-blindbet is a multi-repo platform: many repositories, one system. A per-repo tracker splits the backlog
-across one board per repository, so nobody can answer "what is open right now" without visiting all of
-them, and work that spans services (most of it) has no natural home. Centralizing in `docs` buys a single
-prioritizable queue, one place where specs and ADRs sit next to the issues that implement them, and
-cross-service dependencies that GitHub can express natively instead of as prose.
-
-`docs` is the right host because it already carries the specs (`spec/`), the decisions (`adr/`), and the
-`ready-for-agent` triage flow the issues are graded against.
+| Repository | Its tracker holds |
+|---|---|
+| [`harmflow/harmflow-app`](https://github.com/harmflow/harmflow-app/issues) | The daemon, the desktop, the installers, and their tests — the monorepo of [ADR-0012](https://github.com/harmflow/docs/blob/main/adr/ADR-0012-harmflow-app-monorepo.md) |
+| [`harmflow/docs`](https://github.com/harmflow/docs/issues) | Documentation only: a wrong, missing, stale, or contradictory document, labelled `repo:docs` |
 
 ### Rules
 
-1. **Create every issue in `docs`**, from any repo: `gh issue create --repo blindbet/docs ...`.
-   `gh` infers the current clone when `--repo` is omitted, so pass it explicitly, always.
-2. **Label the affected service** with `repo:<name>`. This is what keeps the central backlog filterable per
-   service — it replaces the repo boundary you gave up. Cross-cutting work carries one label per touched
-   service.
-3. **Pull requests stay in their own repo.** Only issues are centralized; a PR belongs where the code is.
-4. **Cross-reference with the full form** `blindbet/docs#42`. A bare `#42` in a commit or PR body resolves
-   against the local repo and will silently point at the wrong thing.
-5. **Never enable or reopen a per-repo backlog.** If you find issues in a service repo, migrate the open ones
-   to `docs` and close the originals with a pointer comment.
+1. **File the issue where the fix lands.** Always pass `--repo` to `gh`: it infers the current clone when
+   `--repo` is omitted, which is wrong whenever you work from another repository.
+   `gh issue create --repo harmflow/<repo> ...`.
+2. **Move misfiled issues** with `gh issue transfer <number> harmflow/<repo> --repo harmflow/<current>` instead
+   of working them where they landed.
+3. **Split work that crosses repositories.** A code change that requires a document change (an ADR, an
+   architecture update) is one issue in each repository, each linking the other in full form.
+4. **Cross-reference other repositories with the full form** `harmflow/docs#42`. A bare `#42` in a commit or
+   PR body resolves against the local repo and will silently point at the wrong thing.
+5. **Use the canonical triage labels** in every tracker: `needs-triage`, `needs-info`, `ready-for-agent`,
+   `ready-for-human`, `wontfix` (mapping in `harmflow/docs` → `agents/triage-labels.md`). Create them in a new
+   repository before triaging there.
 
-### Known exception: CI failure issues
-
-Service repos whose `.github/workflows/ci.yml` opens a `ci-failure` issue when `build & test` breaks on
-`main` still file it in the service repo: the workflow authenticates with the built-in `GITHUB_TOKEN`,
-which is scoped to its own repository and cannot create issues elsewhere.
-
-Redirecting them to `docs` requires an org-scoped PAT stored as an org secret. Until that secret exists, leave
-the workflows alone — pointing them at `docs` without it makes CI fail on the failure handler itself.
+The full `gh` mechanics for agent skills live in `harmflow/docs` → `agents/issue-tracker.md`.
 
 ---
 
@@ -144,11 +137,13 @@ the workflows alone — pointing them at `docs` without it makes CI fail on the 
 
 | Resource | Link |
 |---|---|
-| Issue backlog (all repos) | [`blindbet/docs` issues](https://github.com/blindbet/docs/issues) |
+| Code issues | [`harmflow/harmflow-app` issues](https://github.com/harmflow/harmflow-app/issues) |
+| Documentation issues | [`harmflow/docs` issues](https://github.com/harmflow/docs/issues) |
 | Commit conventions (canonical) | [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md) |
 | Contribution guide | [`CONTRIBUTING.md`](CONTRIBUTING.md) |
-| Contribution workflow decision | [`blindbet/docs` → `decisions/`](https://github.com/blindbet/docs/tree/main/decisions) |
-| ADRs | [`blindbet/docs` → `adr/`](https://github.com/blindbet/docs/tree/main/adr) |
+| Licensing and contributions decision | [`harmflow/docs` → `decisions/licensing-and-contributions.md`](https://github.com/harmflow/docs/blob/main/decisions/licensing-and-contributions.md) |
+| ADRs | [`harmflow/docs` → `adr/`](https://github.com/harmflow/docs/tree/main/adr) |
+| Domain glossary | [`harmflow/docs` → `CONTEXT.md`](https://github.com/harmflow/docs/blob/main/CONTEXT.md) |
 | Repository overview | [`README.md`](README.md) |
 | Security reporting | [`SECURITY.md`](SECURITY.md) |
 
@@ -159,14 +154,18 @@ the workflows alone — pointing them at `docs` without it makes CI fail on the 
 - This repo is the **fallback** for the entire org. Changes here affect every repository that has not overridden the file locally — review carefully before merging.
 - A file only becomes an org default if no repository defines its own copy. A repo-level `CONTRIBUTING.md` or
   `.github/ISSUE_TEMPLATE/` silently shadows the default here — check before assuming a change reaches a repo.
+  `harmflow/docs` already overrides the issue forms with documentation-only ones.
 - Default issue templates are read from `.github/ISSUE_TEMPLATE/` **inside** this repository; an
-  `ISSUE_TEMPLATE/` folder at the root is ignored. The issue forms themselves live in `blindbet/docs`, the only
-  repository that accepts issues.
+  `ISSUE_TEMPLATE/` folder at the root is ignored. The folder is inherited as a whole: a repository with any
+  form of its own gets none of the defaults, including `config.yml`.
+- `config.yml` disables blank issues. Removing the default forms while keeping it leaves every inheriting
+  repository with no way to open an issue — and each repository tracks its own.
 - Malformed issue template YAML silently breaks the issue creation UI without any visible error.
 - Claude Code reads `CLAUDE.md` only from the working directory upward, never this file from another
   repository. A rule that must bind elsewhere has to be restated in that repository's `CLAUDE.md`.
 - `LICENSE` is a proprietary notice — do not alter it. GitHub does not inherit `LICENSE` from this repository,
-  so every repository keeps its own copy.
+  so every repository keeps its own copy. The product's eventual license is still open
+  (`D-055`, `D-056`, `OD-04` in `harmflow/docs`); changing it is a decision there first.
 
 ---
 
@@ -179,4 +178,4 @@ the workflows alone — pointing them at `docs` without it makes CI fail on the 
 
 ---
 
-*Last updated: October 13, 2026 by [@lpiedade](https://github.com/lpiedade)*
+*Last updated: October 20, 2026 by [@lpiedade](https://github.com/lpiedade)*

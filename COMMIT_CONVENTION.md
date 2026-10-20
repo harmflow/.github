@@ -1,6 +1,6 @@
 # Commit Conventions
 
-All blindbet repositories follow [Conventional Commits 1.0](https://www.conventionalcommits.org/en/v1.0.0/).
+All harmflow repositories follow [Conventional Commits 1.0](https://www.conventionalcommits.org/en/v1.0.0/).
 
 ## Format
 
@@ -18,7 +18,7 @@ All blindbet repositories follow [Conventional Commits 1.0](https://www.conventi
 |---|---|
 | `feat` | A new capability or behavior |
 | `fix` | A bug fix |
-| `docs` | Documentation only — README, `CLAUDE.md`, ADRs, specs, runbooks |
+| `docs` | Documentation only — README, `CLAUDE.md`, ADRs, specs, decisions, runbooks |
 | `refactor` | A code change that neither fixes a bug nor adds behavior |
 | `test` | Adding or correcting tests, with no production change |
 | `perf` | A change whose purpose is performance |
@@ -41,9 +41,8 @@ Scopes in common use across the org:
 |---|---|
 | `claude` | `CLAUDE.md` and Claude Code configuration |
 | `github` | GitHub Actions workflows and repository templates |
-| `adr`, `spec`, `runbook` | Records in `blindbet/docs` |
-| `db` | Schemas and migrations |
-| `web`, `bff` | `control-plane-ui` packages |
+| `readme`, `adr`, `spec`, `decisions`, `architecture`, `runbook` | Documents in `harmflow/docs` |
+| `daemon`, `desktop`, `installers` | Components of `harmflow-app` ([ADR-0012](https://github.com/harmflow/docs/blob/main/adr/ADR-0012-harmflow-app-monorepo.md)) |
 
 ## Rules
 
@@ -51,29 +50,29 @@ Scopes in common use across the org:
 2. The body is optional. When present, its bullets explain *why*, not what — the diff shows the what.
 3. Wrap the body at 72 columns.
 4. Never add the `Co-Authored-By: Claude ...` trailer; remove it if a tool inserts one.
-5. All issues live in [`blindbet/docs`](https://github.com/blindbet/docs/issues). Reference them in the footer
-   by full form — `Closes blindbet/docs#42`. A bare `#42` resolves against the local repository.
+5. Each repository tracks its own issues. Reference an issue in the footer: `Closes #42` when it lives in the same
+   repository, the full form `Closes harmflow/docs#42` when it lives in another. A bare `#42` always resolves
+   against the local repository.
 6. Breaking changes: add `!` after the type or scope, and a `BREAKING CHANGE:` footer that says how to migrate.
-7. Merge commits created by GitHub (`Merge pull request #N ...`) are exempt; the pull request title must itself
-   be a valid subject.
+7. Pull requests are merged with **Rebase and merge**, so every commit lands on `main` unchanged: each commit in
+   a pull request must be a valid Conventional Commit, and the pull request title must itself be a valid subject.
 
 ## Examples
 
 ```
-ci(github): open a tracking issue when CI breaks on main
-docs(adr): propose ADR-0043 listed options scope from Stage 3
-feat(dashboard): wire StrategyPnlPanel to live per-strategy P&L
-fix(qarp-ibov): correct IBOV constituent list to official B3 composition
-chore(claude): enable graphify native RAG integration
+docs(adr): record harmflow-app as a monorepo for daemon and desktop
+docs(decisions): settle failover triggers and continuation
+docs(spec): make tasks general-purpose with type-specific parameters
+feat(daemon): load task definitions from the YAML directory
+fix(desktop): keep the dashboard connected after the daemon restarts
 ```
 
 With a body:
 
 ```
-docs(claude): fix title, Java setup, and service commands
+docs: track issues per repository instead of centrally in docs
 
-- The file was titled trading-engine and had no overview of this
-  service
-- make restart-risk and scripts/restart.sh do not exist; point at
-  scripts/run.sh and infra's services.sh instead
+- harmflow keeps each repository's issues in its own tracker, so docs
+  no longer claims to be the platform-wide backlog
+- Keep repo:docs on every issue here to flag documentation work
 ```
