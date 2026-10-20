@@ -9,7 +9,7 @@ body:
     attributes:
       value: |
         Each harmflow repository tracks its own issues: file this where the fix lands. A wrong or missing
-        document goes to `harmflow/docs`; link it here in full form (`harmflow/docs#42`) if one must change too.
+        document goes to `harmflow/harmflow-docs`; link it here in full form (`harmflow/harmflow-docs#42`) if one must change too.
   - type: textarea
     id: summary
     attributes:
@@ -33,7 +33,7 @@ body:
     id: expected-behavior
     attributes:
       label: Expected behavior
-      description: What should have happened? Cite the spec (FS-0NN) or ADR in harmflow/docs that defines it, if any.
+      description: What should have happened? Cite the spec (FS-0NN) or ADR in harmflow/harmflow-docs that defines it, if any.
     validations:
       required: true
   - type: textarea

@@ -9,7 +9,7 @@ body:
     attributes:
       value: |
         Each harmflow repository tracks its own issues: file this where the work lands. A change that also needs a
-        spec, an ADR, or an architecture update gets a matching issue in `harmflow/docs`, linked in full form.
+        spec, an ADR, or an architecture update gets a matching issue in `harmflow/harmflow-docs`, linked in full form.
 
         An issue is `ready-for-agent` once the problem, the outcome, and the acceptance criteria are concrete
         enough to implement without further questions.
@@ -42,8 +42,8 @@ body:
     id: references
     attributes:
       label: Related spec, ADR, or issue
-      description: Use the IDs from spec/ and adr/ in harmflow/docs, and full-form issue links.
-      placeholder: e.g. FS-001, ADR-0001, harmflow/docs#42
+      description: Use the IDs from spec/ and adr/ in harmflow/harmflow-docs, and full-form issue links.
+      placeholder: e.g. FS-001, ADR-0001, harmflow/harmflow-docs#42
     validations:
       required: false
   - type: textarea

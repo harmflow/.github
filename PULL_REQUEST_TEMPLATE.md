@@ -8,7 +8,7 @@
 
 ## Linked Issue
 
-<!-- Each repository tracks its own issues: Closes #123 here, or the full form Closes harmflow/docs#123 for another repo. -->
+<!-- Each repository tracks its own issues: Closes #123 here, or the full form Closes harmflow/harmflow-docs#123 for another repo. -->
 
 ## Type of Change
 
@@ -32,7 +32,7 @@
 
 - [ ] The change is focused, with no unrelated refactors.
 - [ ] Every commit is a valid Conventional Commit (the PR is merged with Rebase and merge).
-- [ ] Documentation is updated where behavior changed (README, `CLAUDE.md`), or a linked `harmflow/docs` issue
+- [ ] Documentation is updated where behavior changed (README, `CLAUDE.md`), or a linked `harmflow/harmflow-docs` issue
       covers the ADR, spec, or architecture change.
 - [ ] Security impact considered; no secrets, credentials, or local configuration committed.
 - [ ] Screenshots or recordings are included for user-facing UI changes.
