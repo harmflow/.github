@@ -99,7 +99,6 @@ work fits it with different parameters.
 |---|---|
 | [`harmflow-app`](https://github.com/harmflow/harmflow-app) | The daemon, the desktop app, and the installers, in one monorepo |
 | [`harmflow-site`](https://github.com/harmflow/harmflow-site) | The product website |
-| [`.github`](https://github.com/harmflow/.github) | Organization defaults: contribution guide, issue forms, security policy |
 
 ## Get involved
 
