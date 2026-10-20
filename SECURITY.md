@@ -9,9 +9,9 @@ branches. If a repository has its own `SECURITY.md`, that policy takes precedenc
 
 Never report a vulnerability in a public issue, discussion, or pull request.
 
-harmflow's code and documentation repositories are private, and GitHub's private vulnerability reporting is only
-available on public repositories. Report privately through this public repository instead, for every harmflow
-repository — the public `harmflow-site` included, so every report reaches the same place:
+`harmflow-docs` is private, and GitHub's private vulnerability reporting is only available on public repositories. To
+keep one channel for every harmflow repository, report privately through this public repository — the public
+`harmflow-app` and `harmflow-site` included:
 
 1. Open [a new security advisory for `harmflow/.github`](https://github.com/harmflow/.github/security/advisories/new).
 2. Name the affected repository in the title.

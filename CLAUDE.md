@@ -98,8 +98,8 @@ The full reference is [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md). A summary 
 2. Keep PRs focused — one logical change per PR. The PR title is a valid Conventional Commits subject.
 3. Link the issue in the PR body: `Closes #42` in the same repository, `Closes harmflow/<repo>#42` across
    repositories.
-4. All CI checks must pass before merging. Branch protection is unavailable for private repositories on the
-   free plan, so this is enforced by convention, not by GitHub.
+4. All CI checks must pass before merging. On the free plan, branch protection is available on the public
+   repositories but not on the private `harmflow-docs`, where this is enforced by convention only.
 5. Merge with **Rebase and merge** to keep `main` linear; never use Squash and merge or create merge commits
    (`gh pr merge --rebase`). Every commit in the PR lands on `main` as-is, so each one must be a valid
    Conventional Commit — fold review fixes into their commits (`--fixup` + `rebase -i --autosquash`) first.

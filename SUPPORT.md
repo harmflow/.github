@@ -10,7 +10,7 @@ Each harmflow repository tracks its own issues. Open an issue in the repository 
 | A document that is wrong, missing, stale, or contradictory | [`harmflow/harmflow-docs`](https://github.com/harmflow/harmflow-docs/issues/new/choose) |
 | The public product website — its pages, content, and deployment | [`harmflow/harmflow-site`](https://github.com/harmflow/harmflow-site/issues/new/choose) |
 
-`harmflow-site` is public: anyone can read its issues. GitHub Discussions are not enabled.
+`harmflow-app` and `harmflow-site` are public: anyone can read their issues. GitHub Discussions are not enabled.
 
 - **Bugs** — use the *Bug report* form (*Documentation problem* in `harmflow-docs`).
 - **New capabilities or improvements** — use the *Feature request* form (*Documentation request* in
