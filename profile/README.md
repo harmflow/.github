@@ -24,7 +24,7 @@
 
 ## Why HarmFlow
 
-Agent harnesses can already implement an issue or fix a failing test. Running them **every night, across several
+Agent harnesses can already implement an issue or fix a failing test. Running them **every day, across several
 repositories, without babysitting** usually takes cron jobs, home-made scripts, and terminals checked by hand.
 HarmFlow turns that into one product: define a task once, let it run on your own computer, and follow every result.
 

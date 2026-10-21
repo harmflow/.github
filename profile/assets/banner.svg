@@ -127,7 +127,7 @@
     </g>
 
     <!-- Prompt -->
-    <text x="64" y="78" class="mono" font-size="16" letter-spacing="3" fill="#22d3ee">&gt;_ AGENT ORCHESTRATION<tspan
+    <text x="64" y="78" class="mono" font-size="16" letter-spacing="3" fill="#22d3ee">&gt;_ AGENT SCHEDULER<tspan
         class="cursor" fill="#22d3ee"> &#x258C;</tspan></text>
 
     <!-- Status chip -->
@@ -143,7 +143,7 @@
     </g>
 
     <!-- Tagline -->
-    <text x="64" y="256" class="sans" font-size="25" fill="#b8c4dc">Local-first automation manager for AI coding agents.</text>
+    <text x="64" y="256" class="sans" font-size="25" fill="#b8c4dc">Local-first automation manager for AI agents.</text>
     <text x="64" y="304" class="mono" font-size="14" letter-spacing="3" fill="#7d8bab">SCHEDULE <tspan
         fill="#22d3ee">&#x2192;</tspan> RUN <tspan fill="#8b5cf6">&#x2192;</tspan> MONITOR <tspan
         fill="#e040fb">&#x2192;</tspan> RESUME</text>
