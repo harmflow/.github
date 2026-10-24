@@ -1,8 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Report a documentation problem
-    url: https://github.com/harmflow/harmflow-docs/issues/new/choose
-    about: A wrong, missing, stale, or contradictory document belongs in harmflow/harmflow-docs, not here.
   - name: Report a security vulnerability
     url: https://github.com/harmflow/.github/blob/main/SECURITY.md
     about: Never report vulnerabilities in a public issue. Follow the private reporting process.

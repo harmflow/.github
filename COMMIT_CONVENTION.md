@@ -41,8 +41,8 @@ Scopes in common use across the org:
 |---|---|
 | `claude` | `CLAUDE.md` and Claude Code configuration |
 | `github` | GitHub Actions workflows and repository templates |
-| `readme`, `adr`, `spec`, `decisions`, `architecture`, `runbook` | Documents in `harmflow/harmflow-docs` |
-| `daemon`, `desktop`, `installers` | Components of `harmflow-app` ([ADR-0012](https://github.com/harmflow/harmflow-docs/blob/main/adr/ADR-0012-harmflow-app-monorepo.md)) |
+| `readme`, `adr`, `spec`, `decisions`, `architecture`, `runbook` | Documents in the private documentation repository |
+| `daemon`, `desktop`, `installers` | Components of `harmflow-app` (ADR-012) |
 
 ## Rules
 
@@ -51,8 +51,9 @@ Scopes in common use across the org:
 3. Wrap the body at 72 columns.
 4. Never add the `Co-Authored-By: Claude ...` trailer; remove it if a tool inserts one.
 5. Each repository tracks its own issues. Reference an issue in the footer: `Closes #42` when it lives in the same
-   repository, the full form `Closes harmflow/harmflow-docs#42` when it lives in another. A bare `#42` always resolves
-   against the local repository.
+   repository, the full form `Closes harmflow/harmflow-site#42` when it lives in another. A bare `#42` always resolves
+   against the local repository. A commit in a public repository never references a private repository's issue, and
+   cites a private record by its ID (`FS-NNN FR-NNN`, `AC-NNN`, `D-NNN`, `ADR-NNN`), never by link or path.
 6. Breaking changes: add `!` after the type or scope, and a `BREAKING CHANGE:` footer that says how to migrate.
 7. Pull requests are merged with **Rebase and merge**, so every commit lands on `main` unchanged: each commit in
    a pull request must be a valid Conventional Commit, and the pull request title must itself be a valid subject.
