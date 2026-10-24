@@ -5,22 +5,24 @@ rules in its `README.md` or `CLAUDE.md`.
 
 ## Who can contribute
 
-harmflow intends to accept outside contributions while reserving commercial exploitation to its owner (`D-055` in
-`harmflow/harmflow-docs`). The license and contributor agreement that make this possible are not published yet
-([`decisions/licensing-and-contributions.md`](https://github.com/harmflow/harmflow-docs/blob/main/decisions/licensing-and-contributions.md)
-in `harmflow/harmflow-docs`). Until they are, every repository is proprietary (see its `LICENSE`) and contributions come from
-authorized collaborators only; pull requests from anyone else are not accepted yet.
+harmflow intends to accept outside contributions while reserving commercial exploitation to its owner (`D-055`). The
+license and contributor agreement that make this possible are not published yet. Until they are, every repository is
+proprietary (see its `LICENSE`) and contributions come from authorized collaborators only; pull requests from anyone
+else are not accepted yet.
 
 ## Issues
 
 Each repository tracks its own issues. File an issue in the repository where the fix lands: `harmflow-app` for the
-daemon, the desktop, the installers, and their tests; `harmflow-docs` for documentation; `harmflow-site` for the
-public product website. `harmflow-app` and `harmflow-site` are public, so their issues never restate private work —
-link it instead.
+daemon, the desktop, the installers, and their tests; `harmflow-site` for the public product website. Specifications,
+ADRs, and decisions live in a private repository that tracks its own.
+
+`harmflow-app` and `harmflow-site` are public, so their issues, pull requests, commits, and files never restate private
+work. Cite a private record by its ID (`FS-NNN FR-NNN`, `AC-NNN`, `D-NNN`, `ADR-NNN`), never by link or path, and never
+reference an issue in the private repository.
 
 - Search existing issues before opening a new one.
-- When the work also needs a change in another repository, open an issue there too and link the two in full form
-  (`harmflow/harmflow-docs#42`).
+- When the work also needs a change in another public repository, open an issue there too and link the two in full
+  form (`harmflow/harmflow-site#42`).
 - For larger changes, agree on the approach in the issue before writing code.
 
 ## Workflow
@@ -31,7 +33,8 @@ link it instead.
 3. Make one focused change. Add or update tests when behavior changes.
 4. Run the repository's documented checks locally (see its `README.md` or `CLAUDE.md`).
 5. Open a pull request in the same repository and link its issue: `Closes #<number>` in the same repository,
-   `Closes harmflow/<repo>#<number>` across repositories.
+   `Closes harmflow/<repo>#<number>` across repositories. A public repository never closes a private repository's
+   issue this way; that issue is closed from its own repository.
 
 ## Commits
 
@@ -51,7 +54,7 @@ description includes:
 ## Reviews and Merging
 
 - Every CI check must be green before merging. On the free plan, branch protection is available on the public
-  repositories but not on the private `harmflow-docs`, where this is enforced by convention only.
+  repositories but not on private ones, where this is enforced by convention only.
 - Merge with **Rebase and merge** to keep `main` linear; never use Squash and merge or create merge commits.
   Every commit in the pull request lands on `main`, so each one must follow
   [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md). Fold review fixes into the commits they belong to before merging.
@@ -60,8 +63,8 @@ description includes:
 ## Coding Conventions
 
 - Follow the style, architecture, and tooling already present in the repository.
-- Use the domain terms of [`CONTEXT.md`](https://github.com/harmflow/harmflow-docs/blob/main/CONTEXT.md) in `harmflow/harmflow-docs`
-  for names in code, issues, and documents.
+- Use the project's domain terms for names in code, issues, and documents. The glossary is kept privately, so follow
+  the names the repository already uses.
 - Prefer clear names and simple control flow.
 - Keep unrelated refactors out of feature and bug-fix pull requests.
 - Document behavior that is non-obvious or important for maintainers.

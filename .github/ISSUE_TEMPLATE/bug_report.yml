@@ -8,8 +8,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        Each harmflow repository tracks its own issues: file this where the fix lands. A wrong or missing
-        document goes to `harmflow/harmflow-docs`; link it here in full form (`harmflow/harmflow-docs#42`) if one must change too.
+        Each harmflow repository tracks its own issues: file this where the fix lands. Specifications, ADRs, and
+        decisions are kept privately: cite one by its ID (`FS-NNN`, `ADR-NNN`), never by link or path.
   - type: textarea
     id: summary
     attributes:
@@ -33,7 +33,7 @@ body:
     id: expected-behavior
     attributes:
       label: Expected behavior
-      description: What should have happened? Cite the spec (FS-0NN) or ADR in harmflow/harmflow-docs that defines it, if any.
+      description: What should have happened? Cite the spec (FS-NNN) or ADR (ADR-NNN) that defines it by ID, if any.
     validations:
       required: true
   - type: textarea
