@@ -9,7 +9,8 @@
 ## Linked Issue
 
 <!-- Each repository tracks its own issues: Closes #123 here, or the full form Closes harmflow/harmflow-site#123 for
-     another public repo. Cite private records by ID (FS-NNN FR-NNN, AC-NNN, D-NNN, ADR-NNN), never by link or path. -->
+     another public repo. Never cite a private specification, ADR, or decision by ID, link, or path, and never a
+     private repository's issue; describe it in plain words. -->
 
 ## Type of Change
 
@@ -33,7 +34,7 @@
 
 - [ ] The change is focused, with no unrelated refactors.
 - [ ] Every commit is a valid Conventional Commit (the PR is merged with Rebase and merge, never squashed).
-- [ ] Documentation is updated where behavior changed (README, `CLAUDE.md`); an ADR, spec, or decision it relies on is
-      cited by ID, never by link or path.
+- [ ] Documentation is updated where behavior changed (README, `CLAUDE.md`), and no private record is cited by ID,
+      link, or path — here, in the commits, or in the code.
 - [ ] Security impact considered; no secrets, credentials, or local configuration committed.
 - [ ] Screenshots or recordings are included for user-facing UI changes.

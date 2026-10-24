@@ -9,7 +9,7 @@ body:
     attributes:
       value: |
         Each harmflow repository tracks its own issues: file this where the fix lands. Specifications, ADRs, and
-        decisions are kept privately: cite one by its ID (`FS-NNN`, `ADR-NNN`), never by link or path.
+        decisions are kept privately: never cite one by ID, link, or path.
   - type: textarea
     id: summary
     attributes:
@@ -33,7 +33,7 @@ body:
     id: expected-behavior
     attributes:
       label: Expected behavior
-      description: What should have happened? Cite the spec (FS-NNN) or ADR (ADR-NNN) that defines it by ID, if any.
+      description: What should have happened? Describe it in plain words.
     validations:
       required: true
   - type: textarea

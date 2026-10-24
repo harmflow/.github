@@ -10,8 +10,8 @@ body:
       value: |
         Each harmflow repository tracks its own issues: file this where the work lands. A change that also needs a
         spec, an ADR, or an architecture update gets a matching issue in the private documentation repository, which
-        links this one. Cite private records here by ID (`FS-NNN FR-NNN`, `AC-NNN`, `D-NNN`, `ADR-NNN`), never by
-        link or path.
+        links this one. Never cite private records here by ID, link, or path: describe what the work needs in plain
+        words.
 
         An issue is `ready-for-agent` once the problem, the outcome, and the acceptance criteria are concrete
         enough to implement without further questions.
@@ -43,9 +43,9 @@ body:
   - type: input
     id: references
     attributes:
-      label: Related spec, ADR, or issue
-      description: Cite specs, ADRs, and decisions by ID, never by link or path, and public issues in full form.
-      placeholder: e.g. FS-001 FR-002, ADR-001, harmflow/harmflow-site#42
+      label: Related issues
+      description: Public issues, in full form for another repository. Never a private record or issue.
+      placeholder: e.g. #12, harmflow/harmflow-site#42
     validations:
       required: false
   - type: textarea

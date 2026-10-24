@@ -5,7 +5,7 @@ rules in its `README.md` or `CLAUDE.md`.
 
 ## Who can contribute
 
-harmflow intends to accept outside contributions while reserving commercial exploitation to its owner (`D-055`). The
+harmflow intends to accept outside contributions while reserving commercial exploitation to its owner. The
 license and contributor agreement that make this possible are not published yet. Until they are, every repository is
 proprietary (see its `LICENSE`) and contributions come from authorized collaborators only; pull requests from anyone
 else are not accepted yet.
@@ -16,9 +16,10 @@ Each repository tracks its own issues. File an issue in the repository where the
 daemon, the desktop, the installers, and their tests; `harmflow-site` for the public product website. Specifications,
 ADRs, and decisions live in a private repository that tracks its own.
 
-`harmflow-app` and `harmflow-site` are public, so their issues, pull requests, commits, and files never restate private
-work. Cite a private record by its ID (`FS-NNN FR-NNN`, `AC-NNN`, `D-NNN`, `ADR-NNN`), never by link or path, and never
-reference an issue in the private repository.
+`harmflow-app` and `harmflow-site` are public, so their issues, pull requests, commits, and files — code, comments, and
+test names included — never restate private work and never cite a private record by ID, link, or path. Describe what the
+work needs in plain words; a neutral term such as "the specification" or "a decision" is fine. Never reference an issue
+in the private repository: the private documentation links the public work, not the reverse.
 
 - Search existing issues before opening a new one.
 - When the work also needs a change in another public repository, open an issue there too and link the two in full

@@ -90,7 +90,7 @@ The full reference is [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md). A summary 
 - Do **not** add the `Co-Authored-By: Claude ...` trailer. If a tool inserts it, remove it before committing.
 - Reference issues in the footer: `Closes #42` for an issue in the same repository, the full form
   `Closes harmflow/harmflow-site#42` for one in another repository. A public repository never references a private
-  repository's issue.
+  repository's issue, and never cites a private record by ID, link, or path.
 - Breaking changes: `!` after the type or scope, plus a `BREAKING CHANGE:` footer.
 
 ---
@@ -115,8 +115,8 @@ The full reference is [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md). A summary 
 
 | Repository | Its tracker holds |
 |---|---|
-| [`harmflow/harmflow-app`](https://github.com/harmflow/harmflow-app/issues) | The daemon, the desktop, the installers, and their tests — the monorepo of ADR-012. **Public**: anyone can read its issues |
-| [`harmflow/harmflow-site`](https://github.com/harmflow/harmflow-site/issues) | The public product website and its build and deployment — ADR-014. **Public**: anyone can read its issues |
+| [`harmflow/harmflow-app`](https://github.com/harmflow/harmflow-app/issues) | The daemon, the desktop, the installers, and their tests, in one monorepo. **Public**: anyone can read its issues |
+| [`harmflow/harmflow-site`](https://github.com/harmflow/harmflow-site/issues) | The public product website and its build and deployment. **Public**: anyone can read its issues |
 | The private documentation repository | Documentation only: a wrong, missing, stale, or contradictory document, labelled `repo:docs` |
 
 ### Rules
@@ -131,9 +131,11 @@ The full reference is [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md). A summary 
    issue links the public one, never the reverse.
 4. **Cross-reference other public repositories with the full form** `harmflow/harmflow-site#42`. A bare `#42` in a
    commit or PR body resolves against the local repo and will silently point at the wrong thing.
-5. **Cite private records by ID, never by link or path.** A public issue, PR, commit, or file names a specification,
-   ADR, or decision by its ID (`FS-NNN FR-NNN`, `AC-NNN`, `D-NNN`, `ADR-NNN`) and never references a private
-   repository's issue, `Closes` lines included.
+5. **Never cite a private record.** A public issue, PR, commit, or file — code, comments, and test names included —
+   never names a specification, ADR, or decision of the private documentation repository by ID, link, or path, and
+   never references a private repository's issue, `Closes` lines included. Describe what the work needs in plain
+   words; a neutral term such as "the specification" or "a decision" is fine. Traceability runs one way: the private
+   documentation links the public issue or PR.
 6. **Use the canonical triage labels** in every tracker: `needs-triage`, `needs-info`, `ready-for-agent`,
    `ready-for-human`, `wontfix`. Create them in a new repository before triaging there.
 
@@ -147,7 +149,7 @@ The full reference is [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md). A summary 
 | Website issues | [`harmflow/harmflow-site` issues](https://github.com/harmflow/harmflow-site/issues) |
 | Commit conventions (canonical) | [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md) |
 | Contribution guide | [`CONTRIBUTING.md`](CONTRIBUTING.md) |
-| Specifications, ADRs, decisions, domain glossary | Private documentation repository — cite records by ID, never by link or path |
+| Specifications, ADRs, decisions, domain glossary | Private documentation repository — never cited from a public repository by ID, link, or path |
 | Repository overview | [`README.md`](README.md) |
 | Security reporting | [`SECURITY.md`](SECURITY.md) |
 
@@ -166,22 +168,22 @@ The full reference is [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md). A summary 
   repository with no way to open an issue — and each repository tracks its own.
 - Malformed issue template YAML silently breaks the issue creation UI without any visible error.
 - `harmflow-app`, `harmflow-site`, and this repository are **public**, history and issues included; the
-  documentation repository is private. A public issue that mirrors private work cites its records by ID
-  (`FS-NNN FR-NNN`, `AC-NNN`, `D-NNN`, `ADR-NNN`) without restating it, never by link or path — unannounced features,
-  internal decisions, secrets, and personal identifiers (task-manager project or task IDs, account IDs, personal
-  e-mail addresses) never land in a public repository, its `CLAUDE.md` included (ADR-014).
+  documentation repository is private. A public issue that mirrors private work states only what that work needs, in
+  plain words, and cites none of the private records by ID, link, or path — unannounced features, internal decisions,
+  secrets, and personal identifiers (task-manager project or task IDs, account IDs, personal e-mail addresses) never
+  land in a public repository, its `CLAUDE.md` included.
 - `profile/README.md` renders on the organization page, outside this repository, so its links and images use
   absolute URLs. Its SVGs load from `raw.githubusercontent.com` on `main`: a new or changed image shows only after it
   is merged. They load as `<img>`, so no scripts or web fonts — system font stacks and CSS animations only, stopped
   under `prefers-reduced-motion`. Their look borrows the desktop's cyberpunk inspiration. The logo in `profile/assets/`
-  is the official HarmFlow logo (`D-098`), and `logo.svg` is the avatar's own source: the app's icons are drawn from a
-  static master in `harmflow-app`. The banner and the diagram are not the official visual identity, whose palette is
-  still open (`OD-14`).
+  is the official HarmFlow logo, and `logo.svg` is the avatar's own source: the app's icons are drawn from a static
+  master in `harmflow-app`. The banner and the diagram are not the official visual identity, whose palette is still
+  open.
 - Claude Code reads `CLAUDE.md` only from the working directory upward, never this file from another
   repository. A rule that must bind elsewhere has to be restated in that repository's `CLAUDE.md`.
 - `LICENSE` is a proprietary notice — do not alter it. GitHub does not inherit `LICENSE` from this repository,
-  so every repository keeps its own copy. The product's eventual license is still open
-  (`D-055`, `D-056`, `OD-04`); changing it is a decision in the private documentation repository first.
+  so every repository keeps its own copy. The product's eventual license is still open; changing it is a decision in
+  the private documentation repository first.
 
 ---
 
