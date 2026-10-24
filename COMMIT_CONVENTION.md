@@ -42,7 +42,7 @@ Scopes in common use across the org:
 | `claude` | `CLAUDE.md` and Claude Code configuration |
 | `github` | GitHub Actions workflows and repository templates |
 | `readme`, `adr`, `spec`, `decisions`, `architecture`, `runbook` | Documents in the private documentation repository |
-| `daemon`, `desktop`, `installers` | Components of `harmflow-app` (ADR-012) |
+| `daemon`, `desktop`, `installers` | Components of `harmflow-app` |
 
 ## Rules
 
@@ -53,7 +53,7 @@ Scopes in common use across the org:
 5. Each repository tracks its own issues. Reference an issue in the footer: `Closes #42` when it lives in the same
    repository, the full form `Closes harmflow/harmflow-site#42` when it lives in another. A bare `#42` always resolves
    against the local repository. A commit in a public repository never references a private repository's issue, and
-   cites a private record by its ID (`FS-NNN FR-NNN`, `AC-NNN`, `D-NNN`, `ADR-NNN`), never by link or path.
+   never cites a private record by ID, link, or path: it describes the reason in plain words.
 6. Breaking changes: add `!` after the type or scope, and a `BREAKING CHANGE:` footer that says how to migrate.
 7. Pull requests are merged with **Rebase and merge**, so every commit lands on `main` unchanged: each commit in
    a pull request must be a valid Conventional Commit, and the pull request title must itself be a valid subject.

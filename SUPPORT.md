@@ -10,8 +10,8 @@ Each harmflow repository tracks its own issues. Open an issue in the repository 
 | The public product website — its pages, content, and deployment | [`harmflow/harmflow-site`](https://github.com/harmflow/harmflow-site/issues/new/choose) |
 
 `harmflow-app` and `harmflow-site` are public: anyone can read their issues. GitHub Discussions are not enabled.
-Specifications, ADRs, and decisions are kept privately; a problem in a public repository's own documentation (its
-README or guides) is filed in that repository.
+Specifications, ADRs, and decisions are kept privately and are never cited from a public repository; a problem in a
+public repository's own documentation (its README or guides) is filed in that repository.
 
 - **Bugs** — use the *Bug report* form.
 - **New capabilities or improvements** — use the *Feature request* form.
