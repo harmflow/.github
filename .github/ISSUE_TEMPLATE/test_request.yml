@@ -1,0 +1,68 @@
+name: Test request
+description: Ask for a test or a proof of behavior this repository already has.
+title: "[Test]: "
+labels:
+  - test
+  - needs-triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form when the behavior already exists and what is missing is the test or the proof that an
+        acceptance criterion holds. Behavior the code does not have is a feature request, whose issue carries the
+        tests of what it builds; behavior that is wrong is a bug report. Never cite private records here by ID, link,
+        or path: describe what must be proven in plain words.
+
+        An issue is `ready-for-agent` once the behavior, what is missing, and the acceptance criteria are concrete
+        enough to write the test without further questions.
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Behavior to prove
+      description: What must be true, in plain words?
+      placeholder: Describe the behavior as a user or a caller sees it, not the test.
+    validations:
+      required: true
+  - type: textarea
+    id: current-coverage
+    attributes:
+      label: What exists today
+      description: The code that does it, the tests that already cover part of it, and what none of them shows.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: >-
+        The tests or proofs that close the issue, each with where it runs: a unit or integration test, a real
+        session, or a real operating system.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: input
+    id: references
+    attributes:
+      label: Related issues
+      description: Public issues, in full form for another repository. Never a private record or issue.
+      placeholder: e.g. #12, harmflow/harmflow-site#42
+    validations:
+      required: false
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Links, examples, data, or screenshots.
+    validations:
+      required: false
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues for similar requests.
+          required: true
+        - label: The behavior already exists; this asks for a test or a proof, not for new behavior.
+          required: true
