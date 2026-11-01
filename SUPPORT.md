@@ -15,6 +15,7 @@ public repository's own documentation (its README or guides) is filed in that re
 
 - **Bugs** — use the *Bug report* form.
 - **New capabilities or improvements** — use the *Feature request* form.
+- **A missing test or proof of behavior that already exists** — use the *Test request* form.
 - **Questions and troubleshooting** — blank issues are disabled, so use the closest form and add the `question`
   label.
 

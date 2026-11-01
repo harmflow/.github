@@ -25,7 +25,8 @@
 │   └── ISSUE_TEMPLATE/
 │       ├── bug_report.yml       # Default bug form for repos without their own forms
 │       ├── config.yml           # Default issue chooser: no blank issues, security contact link
-│       └── feature_request.yml  # Default feature form for repos without their own forms
+│       ├── feature_request.yml  # Default feature form for repos without their own forms
+│       └── test_request.yml     # Default form for a missing test or proof of existing behavior
 ├── profile/
 │   ├── README.md           # Org profile shown at github.com/harmflow
 │   └── assets/             # SVG banner and diagram the profile embeds

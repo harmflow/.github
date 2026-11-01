@@ -12,9 +12,9 @@ A repository overrides a default by adding its own file at the same path.
 - `CONTRIBUTING.md` - contribution workflow and review guidelines.
 - `SECURITY.md` - private vulnerability reporting guidance.
 - `SUPPORT.md` - where to ask questions and request help.
-- `.github/ISSUE_TEMPLATE/` - default issue forms (bug report, feature request) and chooser for every repository
-  that has no forms of its own. Each repository tracks its own issues; the private documentation repository overrides
-  these forms with documentation-only ones.
+- `.github/ISSUE_TEMPLATE/` - default issue forms (bug report, feature request, test request) and chooser for every
+  repository that has no forms of its own. Each repository tracks its own issues; the private documentation repository
+  overrides these forms with documentation-only ones.
 - `PULL_REQUEST_TEMPLATE.md` - default pull request checklist.
 - `CLAUDE.md` - guidance for Claude Code working in this repository.
 - `profile/README.md` - organization profile shown at github.com/harmflow; its SVG banner and diagram are in
